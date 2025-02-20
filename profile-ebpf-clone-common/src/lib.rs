@@ -1,6 +1,5 @@
 //! Shared logic related to both user space and kernel space programs.
 #![no_std]
-
 #![deny(clippy::print_stderr)]
 #![deny(clippy::print_stdout)]
 #![deny(missing_docs)]
@@ -15,11 +14,10 @@ pub const TASK_COMM_LEN: usize = 16;
 /// Max Stack depth - used to sample the amount of pointers pulled from the stack.
 pub const MAX_STACK_DEPTH: usize = 128;
 
-/// The slice used in extracting stack function pointers. 
+/// The slice used in extracting stack function pointers.
 pub type StackTrace = [u64; MAX_STACK_DEPTH];
 
-
-/// A generic stack trace event. This data structure is used to communicate this data 
+/// A generic stack trace event. This data structure is used to communicate this data
 /// between user space and kernel space.
 #[derive(Debug)]
 pub struct StackTraceEvent {
@@ -29,7 +27,7 @@ pub struct StackTraceEvent {
     pub cpu_id: u32,
     /// The comm of the current sample.
     pub comm: [i8; TASK_COMM_LEN],
-    /// Size of the kernel space stack. 
+    /// Size of the kernel space stack.
     pub kstack_sz: c_long,
     /// Size of the user space stack.
     pub ustack_sz: c_long,
@@ -40,7 +38,6 @@ pub struct StackTraceEvent {
 }
 
 impl StackTraceEvent {
-
     /// Helper method to get kernel space stack size.
     #[inline(always)]
     pub fn kstack_size() -> Result<u32, u32> {
