@@ -1,13 +1,12 @@
-# Profile EBPF Rust Cllone
+# Profile EBPF Rust Clone
 
-## Prerequisites
+## Introduction
 
-1. stable rust toolchains: `rustup toolchain install stable`
-1. nightly rust toolchains: `rustup toolchain install nightly --component rust-src`
-1. (if cross-compiling) rustup target: `rustup target add ${ARCH}-unknown-linux-musl`
-1. (if cross-compiling) LLVM: (e.g.) `brew install llvm` (on macOS)
-1. (if cross-compiling) C toolchain: (e.g.) [`brew install filosottile/musl-cross/musl-cross`](https://github.com/FiloSottile/homebrew-musl-cross) (on macOS)
-1. bpf-linker: `cargo install bpf-linker` (`--no-default-features` on macOS)
+This is a clone based on [this tutorial](https://eunomia.dev/en/tutorials/12-profile/) to learn some of the constructs surrounding EBPF. This program uses the EBPF perf event in order to sample user space and kernel space stack frames. Blazesym is then used to infer more information from the underlying stack data. 
+
+## Aya
+
+This program uses the Aya EBPF framework in Rust and is structured as per the aya-template. 
 
 ## Build & Run
 
